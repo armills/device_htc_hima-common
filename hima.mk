@@ -242,10 +242,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
 
-# Power
-PRODUCT_PACKAGES += \
-    power.msm8994
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory

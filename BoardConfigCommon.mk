@@ -157,9 +157,6 @@ COMMON_GLOBAL_CFLAGS += \
     -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' \
     -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
 
-# Power
-TARGET_POWERHAL_VARIANT := qcom
-
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 

@@ -196,6 +196,9 @@ TARGET_SUPPORTS_QSEECOM_APP_CHECK := true
 # CM Hardware
 BOARD_HARDWARE_CLASS := device/htc/hima-common/cmhw
 
+# Vendor init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+
 # inherit from the proprietary version
 -include vendor/htc/hima-common/BoardConfigVendor.mk
 

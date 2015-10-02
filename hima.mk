@@ -251,3 +251,6 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_hima
+    
+# Dot View Case
+PRODUCT_PACKAGES += Dotcase

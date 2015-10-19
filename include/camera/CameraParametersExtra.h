@@ -163,7 +163,20 @@ CameraParameters_EXT::~CameraParameters_EXT() {};
     void getBrightnessLumaTargetSet(int *magic, int *sauce) const; \
     void setBrightnessLumaTargetSet(int brightness, int luma); \
     void setZsl(const char *sauce); \
-    const char *getZsl() const;
+    const char *getZsl() const; \
+    /*
+     * The following variables are included in order to fix video
+     * recording. Our speculation is that the builtin libcamera_client
+     * has a larger definition for the CameraParameters class, and
+     * requires a larger memory allocation. These variables were
+     * added during debugging, and found to accidentally fix recording.
+     *
+     * This workaround can likely be removed if libcamera_client is
+     * switched to build from source.
+     */ \
+    String8 lKeys [300]; \
+    String8 lValues [300]; \
+    size_t lSize;
 
 #define CAMERA_PARAMETERS_EXT_H \
     static const char SCENE_MODE_BURST[]; \

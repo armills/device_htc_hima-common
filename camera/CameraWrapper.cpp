@@ -337,28 +337,9 @@ static char *camera_get_parameters(struct camera_device *device)
     if (!device)
         return NULL;
 
-    char *parameters = VENDOR_CALL(device, get_parameters);
-    wrapper_camera_device_t *wrapper = (wrapper_camera_device_t *)device;
+    char *params = VENDOR_CALL(device, get_parameters);
 
-    CameraParameters params;
-    params.unflatten(String8(parameters));
-    ALOGV("%s: original parameters:", __FUNCTION__);
-    params.dump();
-    bool isVideo = false;
-    if (params.get(CameraParameters::KEY_RECORDING_HINT)) {
-        isVideo = !strcmp(params.get(CameraParameters::KEY_RECORDING_HINT), "true");
-    }
-    /* Disable face detection */
-    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "off");
-    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "off");
-    /* Enable fixed fps mode */
-    params.set("preview-frame-rate-mode", "frame-rate-fixed");
-    if (isVideo && CAMERA_ID(device) == FRONT_CAMERA_ID) {
-		/* Front camera only supports infinity */
-		params.set(CameraParameters::KEY_FOCUS_MODE, "infinity");
-	}
-
-    return strdup(params.flatten().string());
+    return params;
 }
 
 static void camera_put_parameters(struct camera_device *device, char *params)

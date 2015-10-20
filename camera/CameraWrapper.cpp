@@ -349,8 +349,8 @@ static char *camera_get_parameters(struct camera_device *device)
         isVideo = !strcmp(params.get(CameraParameters::KEY_RECORDING_HINT), "true");
     }
     /* Disable face detection */
-    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "off");
-    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "off");
+    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+    params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
     /* Enable fixed fps mode */
     params.set("preview-frame-rate-mode", "frame-rate-fixed");
     if (isVideo && CAMERA_ID(device) == FRONT_CAMERA_ID) {
